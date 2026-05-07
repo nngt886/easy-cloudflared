@@ -33,19 +33,37 @@ if command -v cloudflared >/dev/null 2>&1; then
 
     if [[ "$ACTION" == "2" ]]; then
         echo ""
-        echo "🧹 正在卸载 cloudflared..."
+        echo "🧹 正在卸载 Cloudflared..."
 
-        # 👉 停止服务
-        systemctl stop cloudflared 2>/dev/null || true
-        systemctl disable cloudflared 2>/dev/null || true
+# 停止服务
+echo "⏳ 停止 Cloudflared 服务..."
+systemctl stop cloudflared 2>/dev/null || true
 
-        # 👉 删除文件
-        rm -f /usr/local/bin/cloudflared
-        rm -f /etc/systemd/system/cloudflared.service
+# 禁用开机自启
+echo "⏳ 禁用开机自启..."
+systemctl disable cloudflared 2>/dev/null || true
 
-        systemctl daemon-reexec
+# 删除二进制文件
+if [ -f /usr/local/bin/cloudflared ]; then
+    echo "⏳ 删除 Cloudflared 二进制文件..."
+    rm -v /usr/local/bin/cloudflared
+else
+    echo "ℹ️ Cloudflared 二进制文件未找到"
+fi
 
-        echo "✅ 卸载完成"
+# 删除 systemd 服务文件
+if [ -f /etc/systemd/system/cloudflared.service ]; then
+    echo "⏳ 删除 systemd 服务文件..."
+    rm -v /etc/systemd/system/cloudflared.service
+else
+    echo "ℹ️ systemd 服务文件未找到"
+fi
+
+# 重新加载 systemd
+echo "⏳ 重新加载 systemd 配置..."
+systemctl daemon-reexec
+
+echo "✅ Cloudflared 卸载完成！"
         exit 0
     elif [[ "$ACTION" == "3" ]]; then
         echo "👋 已退出"
