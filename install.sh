@@ -123,7 +123,7 @@ echo "[2/4] 请输入你的配置信息"
 read -p "🔑 请输入 Tunnel Token: " TOKEN
 
 # 👉 本地服务端口（Komari / 面板 / xray）
-read -p "⚙️ 请输入本地端口 (例如 8000): " PORT
+read -p "⚙️ 请输入本地服务端口 (例如 8000): " PORT
 
 # 👉 域名（Cloudflare 已配置的 hostname）
 read -p "🌐 请输入域名 (例如 komari.example.com): " HOSTNAME
