@@ -8,4 +8,4 @@ Cloudflared Tunnel 交互式一键脚本（Token版）
 支持多架构（x86_64 / ARM64）  
 小白可直接使用，一键完成部署  
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/nngt886/easy-cloudflared/refs/heads/main/install.sh)
+bash <(curl -fSL https://raw.githubusercontent.com/nngt886/easy-cloudflared/refs/heads/main/install.sh)
