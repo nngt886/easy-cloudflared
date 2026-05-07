@@ -5,7 +5,6 @@ Cloudflared Tunnel 交互式一键脚本（Token版）
 交互式输入 Token / 本地端口 / 域名   
 自动生成 systemd 服务，守护 Cloudflared，开机自启  
 覆盖安装 / 卸载 / 重新部署 功能   
-支持多架构（x86_64 / ARM64）  
-小白可直接使用，一键完成部署  
+支持多架构（x86_64 / ARM64）    
 ```bash
 bash <(curl -fSL https://raw.githubusercontent.com/nngt886/easy-cloudflared/refs/heads/main/install.sh)
